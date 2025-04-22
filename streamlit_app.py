@@ -29,7 +29,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 pd_df=my_dataframe.to_pandas()
 st.dataframe(pd_df)
 
-search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+
 #st.stop()
 
 ingredients_list=st.multiselect(
@@ -65,5 +65,5 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered,' ' ' + name_on_order + '!', icon="✅")
 
-
+search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
 
